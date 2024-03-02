@@ -105,12 +105,6 @@ class ScheduleApp(QMainWindow):
         self.update_button = QPushButton('Обновить расписание')
         layout.addWidget(self.update_button)
 
-        #self.schedule_list_widget = QListWidget()
-        #layout.addWidget(self.schedule_list_widget)
-
-        #self.schedule_text = QTextEdit()
-        #self.schedule_text.setReadOnly(True)
-        #layout.addWidget(self.schedule_text)
         self.update_button.clicked.connect(self.update_schedule)
 
         self.table_widget = QTableWidget()
