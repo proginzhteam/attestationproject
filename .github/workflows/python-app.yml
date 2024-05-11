@@ -11,12 +11,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9' 
+        python-version: '3.12' 
 
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y xvfb  # Устанавливаем xvfb для создания виртуального дисплея
+        sudo apt-get install -y xvfb
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
