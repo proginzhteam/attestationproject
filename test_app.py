@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 import requests
 from icalendar import Calendar, Event, Timezone
 from test import ScheduleApp
+import pytest
 
 @pytest.fixture(scope='module')
 def app():
