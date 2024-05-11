@@ -17,7 +17,7 @@ def app(qtbot):
     window = ScheduleApp()
     qtbot.addWidget(window)
     yield window
-    window.close(
+    window.close()
 
 def test_initial_state(app, qtbot):
     """Тестирование начальных условий GUI."""
