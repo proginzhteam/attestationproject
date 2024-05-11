@@ -8,14 +8,15 @@ from PyQt5.QtGui import QFont
 from datetime import datetime, timedelta
 import requests
 from icalendar import Calendar, Event, Timezone
-from test import ScheduleApp
+from test import ScheduleApp, group_, directions
 import pytest
 
 @pytest.fixture(scope='module')
 def app():
-    """Фикстура для создания экземпляра приложения."""
-    app = QApplication(sys.argv)
-    return ScheduleApp()
+    test_app = QApplication(sys.argv)
+    window = ScheduleApp()
+    qtbot.addWidget(window)
+    return window
 
 def test_initial_state(app):
     """Тестирование начальных условий GUI."""
@@ -29,5 +30,5 @@ def test_update_button_click(app):
     """Тестирование реакции на нажатие кнопки обновления."""
     app.combobox_group.setCurrentIndex(0)  # Выбор первой группы
     app.date_edit.setDate(QDate.currentDate())  # Установка текущей даты
-    app.update_button.click()  # Имитация нажатия кнопки обновления
+    qtbot.mouseClick(app.update_button, Qt.LeftButton)  # Имитация нажатия кнопки обновления
     assert app.table_widget.rowCount() > 0  # Проверка, что после обновления в таблице появились строки
