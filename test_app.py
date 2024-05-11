@@ -13,7 +13,6 @@ import pytest
 
 @pytest.fixture(scope='function')
 def app(qtbot):
-    """Фикстура для создания экземпляра приложения."""
     test_app = QApplication.instance() if QApplication.instance() else QApplication(sys.argv)
     window = ScheduleApp()
     qtbot.addWidget(window)
