@@ -15,9 +15,15 @@ jobs:
 
     - name: Install dependencies
       run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb  # Устанавливаем xvfb для создания виртуального дисплея
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: Run tests
-      run: |
-        pytest
+      uses: GabrielBB/xvfb-action@v1
+      with:
+        run: |
+          pytest
+          Xvfb :99 -ac &  # Запускаем Xvfb на дисплее :99
+          export DISPLAY=:99  # Устанавливаем переменную окружения DISPLAY
