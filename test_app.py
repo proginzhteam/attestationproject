@@ -13,14 +13,11 @@ import pytest
 
 @pytest.fixture(scope='module')
 def app(qtbot):
-    """Фикстура для создания экземпляра приложения."""
-    # Обратите внимание: QApplication может быть уже создан в другом месте, это может вызывать проблемы.
-    test_app = QApplication.instance() or QApplication(sys.argv)
+    app = QApplication.instance() or QApplication(sys.argv)
     window = ScheduleApp()
     qtbot.addWidget(window)
     yield window
-    # Закрытие приложения после теста
-    window.close()
+    window.close(
 
 def test_initial_state(app, qtbot):
     """Тестирование начальных условий GUI."""
