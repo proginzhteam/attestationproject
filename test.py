@@ -175,6 +175,7 @@ class ScheduleApp(QMainWindow):
         #self.setCentralWidget(self.table_widget)  # Устанавливаем таблицу как центральный виджет
 
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = ScheduleApp()
